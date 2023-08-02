@@ -89,7 +89,7 @@ class ReadLogAndProcessCommand extends Command
             }
 
 
-            $shouldSend = $shouldSend && $user == "Test User";
+            $shouldSend = $shouldSend && $user == "TestUser";
             if ($shouldSend)
                 $telegramMessenger->sendMessage($message);
 
