@@ -27,7 +27,7 @@ class TelegramMessenger
 
         $this->client->get("http://api.telegram.org/bot{$this->apiKey}/sendMessage", [
             RequestOptions::QUERY => $data,
-            RequestOptions::PROXY => 'socks5h://127.0.0.1:1089',
+//            RequestOptions::PROXY => 'socks5h://127.0.0.1:1089',
             RequestOptions::TIMEOUT => 5,
         ]);
     }
