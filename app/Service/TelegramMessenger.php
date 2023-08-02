@@ -17,7 +17,7 @@ class TelegramMessenger
     {
     }
 
-    public function sendMessage(string $message): void
+    public function sendMessage(string $message): bool
     {
 
         $data = [
@@ -25,10 +25,16 @@ class TelegramMessenger
             'text' => $message,
         ];
 
-        $this->client->get("http://api.telegram.org/bot{$this->apiKey}/sendMessage", [
-            RequestOptions::QUERY => $data,
+        try {
+            $this->client->get("http://api.telegram.org/bot{$this->apiKey}/sendMessage", [
+                RequestOptions::QUERY => $data,
 //            RequestOptions::PROXY => 'socks5h://127.0.0.1:1089',
-            RequestOptions::TIMEOUT => 5,
-        ]);
+                RequestOptions::TIMEOUT => 2,
+            ]);
+            return true;
+        } catch (\Exception $exception) {
+
+        }
+        return false;
     }
 }

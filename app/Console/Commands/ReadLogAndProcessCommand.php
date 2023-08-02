@@ -74,7 +74,7 @@ class ReadLogAndProcessCommand extends Command
             }
 
             $shouldSend = $addedNewIp;
-            $message = "User:{$user}";
+            $message = "User: {$user}";
 
             if ($addedNewIp) {
                 $message .= "\nNew IP used";
@@ -88,6 +88,8 @@ class ReadLogAndProcessCommand extends Command
                 $message .= "\nIP: {$ip} last used: {$lastUsedAt->diffForHumans()}";
             }
 
+
+            $shouldSend = $shouldSend && $user == "Test User";
             if ($shouldSend)
                 $telegramMessenger->sendMessage($message);
 
