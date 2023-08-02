@@ -81,7 +81,6 @@ class ReadLogAndProcessCommand extends Command
             }
             if (count($users[$user]) > 3) {
                 $message .= "\nUser reached 3 ip in 30 minute!";
-                $shouldSend = true;
             }
 
             foreach ($users[$user] as $ip => $lastUsedAt) {
